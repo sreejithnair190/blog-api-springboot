@@ -1,7 +1,8 @@
 package com.blogapi.services.Impl;
 
-import com.blogapi.dto.AuthResponseDto;
-import com.blogapi.dto.UserDto;
+import com.blogapi.dto.Response.AuthResponseDto;
+import com.blogapi.dto.Request.UserRequestDto;
+import com.blogapi.dto.Response.UserResponseDto;
 import com.blogapi.entities.User;
 import com.blogapi.exceptions.ValueExistException;
 import com.blogapi.repositories.UserRepository;
@@ -24,21 +25,23 @@ public class UserServiceImpl implements UserService {
     private JwtService jwtService;
 
     @Override
-    public AuthResponseDto createUser(UserDto userDto) {
-        Optional<User> optionalUser = userRepository.findByEmail(userDto.getEmail());
+    public AuthResponseDto createUser(UserRequestDto userRequestDto) {
+        Optional<User> optionalUser = userRepository.findByEmail(userRequestDto.getEmail());
         if (optionalUser.isPresent()){
             throw new ValueExistException("Email Already Exist");
         }
 
-        userDto.setPassword(utils.encodePassword(userDto.getPassword()));
-        User user = modelMapper.map(userDto, User.class);
+        userRequestDto.setPassword(utils.encodePassword(userRequestDto.getPassword()));
+        User user = modelMapper.map(userRequestDto, User.class);
 
         User newUser = userRepository.save(user);
 
         String token = jwtService.generateToken(newUser);
-
+        UserResponseDto userResponseDto = new UserResponseDto(
+                newUser.getId(), newUser.getFirstName(), newUser.getLastName(), newUser.getEmail()
+        );
         return new AuthResponseDto(
-                newUser.getId(), newUser.getFirstName(), newUser.getLastName(), newUser.getEmail(), token
+               userResponseDto , token
         );
     }
 }

@@ -3,8 +3,10 @@ package com.blogapi.config;
 import com.blogapi.exceptions.NotFoundException;
 import com.blogapi.repositories.UserRepository;
 import com.blogapi.utils.Utils;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,8 +18,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ApplicationConfig {
+    @Autowired
     private UserRepository userRepository;
 
     @Bean

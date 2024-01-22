@@ -21,8 +21,8 @@ public class Comment {
     private String comment;
 
     @Column(nullable = false)
-    private String userId;
+    private Long userId;
 
     @Column(nullable = false)
-    private String blogId;
+    private Long blogId;
 }

@@ -1,4 +1,4 @@
-package com.blogapi.dto;
+package com.blogapi.dto.Request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
+public class UserRequestDto {
     private Long id;
     private String firstName;
     private String lastName;

@@ -24,5 +24,5 @@ public class Blog {
     private String content;
 
     @Column(nullable = false)
-    private String userId;
+    private Long userId;
 }

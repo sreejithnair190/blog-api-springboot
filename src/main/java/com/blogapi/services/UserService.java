@@ -1,9 +1,9 @@
 package com.blogapi.services;
 
-import com.blogapi.dto.AuthResponseDto;
-import com.blogapi.dto.UserDto;
+import com.blogapi.dto.Response.AuthResponseDto;
+import com.blogapi.dto.Request.UserRequestDto;
 
 public interface UserService {
 
-    AuthResponseDto createUser(UserDto userDto);
+    AuthResponseDto createUser(UserRequestDto userRequestDto);
 }

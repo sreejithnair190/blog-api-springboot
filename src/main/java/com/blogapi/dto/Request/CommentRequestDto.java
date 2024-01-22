@@ -1,4 +1,4 @@
-package com.blogapi.dto;
+package com.blogapi.dto.Request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentDto {
+public class CommentRequestDto {
     private Long id;
     private String comment;
+    private Long blogId;
 }

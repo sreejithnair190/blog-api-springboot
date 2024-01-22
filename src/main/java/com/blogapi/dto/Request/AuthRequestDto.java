@@ -1,4 +1,4 @@
-package com.blogapi.dto;
+package com.blogapi.dto.Request;
 
 import lombok.*;
 
